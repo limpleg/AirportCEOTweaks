@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using AirportCEOTweaks.StandCreation;
+using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,21 +17,7 @@ namespace AirportCEOTweaks
         {
             return;
             AirportCEOTweaks.Log("initial test");
-            StandCreator.CreateStandMedium();
-        }
-
-    }
-
-    class StandCreator
-    {
-        public static void CreateStandMedium()
-        {
-            if (!StandCreationUtilities.GetStandTemplateCopy(Enums.ThreeStepScale.Medium, out GameObject stand))
-            {
-                return;
-            }
-
-            StandUICreator.CreateStandUI(stand);
+            StandCreator.GetStandTemplate();
         }
 
     }
