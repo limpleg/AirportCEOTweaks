@@ -16,7 +16,7 @@ namespace AirportCEOAircraft
             // More will probably be added!
             AirportCEOAircraft.LogInfo("Seting up ModLoader interactions");
 
-            WatermarkUtils.Register(new WatermarkInfo("T-AC", "", true));
+            WatermarkUtils.Register(new WatermarkInfo("T-AC2", "", true));
 
             AirportCEOAircraft.LogInfo("Completed ModLoader interactions!");
         }

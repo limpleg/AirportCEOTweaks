@@ -79,156 +79,135 @@ namespace AirportCEOAircraft
             yield return original;
         }
         private GameObject MakeAircraftGameObject(AircraftTypeData aircraftTypeData, int index = 0)
+{
+    GameObject copyOf = Singleton<AirTrafficController>.Instance.GetAircraftGameObject(aircraftTypeData.copyFrom);
+    GameObject newGameObject;
+    AircraftType aircraftType;
+
+    if (aircraftTypeData.id[index] == aircraftTypeData.copyFrom)
+    {
+        newGameObject = GameObject.Instantiate(copyOf);
+
+        if (!CustomEnums.TryGetAircraftType(aircraftTypeData.copyFrom, out aircraftType))
         {
-
-            GameObject copyOf = Singleton<AirTrafficController>.Instance.GetAircraftGameObject(aircraftTypeData.copyFrom);
-            GameObject newGameObject;
-            AircraftType aircraftType;
-
-            if (aircraftTypeData.id[index] == aircraftTypeData.copyFrom)
-            {
-                //Debug.Log("ACEO Tweaks | Log: Aircraft Adder MakeAircraftGameObject Conditional True");
-                //Instantiate
-                newGameObject = GameObject.Instantiate(copyOf);
-
-                //AircraftType
-                if (!CustomEnums.TryGetAircraftType(aircraftTypeData.copyFrom, out aircraftType))
-                {
-                    Debug.LogError("ACEO Tweaks | Error: Couldn't find custom enum for " + copyOf.name);
-                }
-                aircraftType.size = aircraftTypeData.size;
-
-                //name and transform of new GameObject
-                newGameObject.name = aircraftType.id;
-                newGameObject.transform.localEulerAngles = Vector3.zero;
-
-                //Add the overwrite to dictionary
-                if (AirportCEOAircraft.aircraftPrefabOverwrites.ContainsKey(copyOf))
-                {
-                    Debug.LogWarning("ACEO Tweaks | Warn: Duplicate overwrites for " + aircraftType.id);
-                }
-                else
-                {
-                    AirportCEOAircraft.aircraftPrefabOverwrites.Add(copyOf, newGameObject);
-                }
-            }
-            else
-            {
-                //Debug.Log("ACEO Tweaks | Log: Aircraft Adder MakeAircraftGameObject Conditional Else");
-                //Instantiate
-                newGameObject = GameObject.Instantiate(copyOf);
-                aircraftType = new AircraftType
-                {
-                    id = aircraftTypeData.id.Length > index ? aircraftTypeData.id[index] : aircraftTypeData.id[0],
-                    size = aircraftTypeData.size
-                };
-
-                //name and transform of new GameObject
-                newGameObject.name = aircraftType.id;
-                newGameObject.transform.localEulerAngles = Vector3.zero;
-                
-
-                //Add the new AircraftType
-                var method = typeof(CustomEnums).GetMethod("AddAircrafTypeRange", BindingFlags.Static | BindingFlags.NonPublic);
-                if (method == null)
-                {
-                    Debug.LogError("ACEO Tweaks | ERROR: Couldn't find AddAircraftTypeRange method via reflection!");
-                }
-                method.Invoke(obj: null, parameters: new object[] { new AircraftType[] { aircraftType } } );
-            
-            }
-            //Debug.Log("ACEO Tweaks | Log: Aircraft Adder MakeAircraftGameObject Conditional End");
-            //Debug.Log("ACEO Tweaks | Log: Aircraft Adder is for "+aircraftType.id);
-            //Debug.Log("ACEO Tweaks | Log: Aircraft Adder is for json " + aircraftTypeData.id[0] +" - "+ index);
-
-
-            if (newGameObject == null)
-            {
-                Debug.LogError("ACEO Tweaks | Error: Aircraft Adder: newGameObject == null!");
-            }
-            AircraftController newAircraftController = newGameObject.GetComponent<AircraftController>();
-            if (newAircraftController == null)
-            {
-                Debug.LogError("ACEO Tweaks | Error: Aircraft Adder: newAircraftController == null!");
-            }
-            AircraftModel newAircraftModel = newAircraftController.am;
-            if (newAircraftModel == null)
-            {
-                Debug.LogError("ACEO Tweaks | Error: Aircraft Adder: newAircraftModel == null!");
-            }
-
-            //Debug.Log("ACEO Tweaks | Log: Aircraft Adder MakeAircraftGameObject Model Block Start");
-
-            newAircraftModel.aircraftType = aircraftTypeData.id[index];  //must have an id at every index. Only manditory array.
-            newAircraftModel.weightClass = aircraftTypeData.threeStepSize;
-            newAircraftModel.isHelicopter = aircraftTypeData.helicopter;
-            newAircraftModel.manufacturer = aircraftTypeData.manufacturer.Length > index ? aircraftTypeData.manufacturer[index] : aircraftTypeData.manufacturer[0];
-            newAircraftModel.modelNbr = aircraftTypeData.displayName.Length > index? aircraftTypeData.displayName[index] : aircraftTypeData.displayName[0];  
-            newAircraftModel.maxPax = aircraftTypeData.capacity_PAX.Length > index ? aircraftTypeData.capacity_PAX[index] : aircraftTypeData.capacity_PAX[0];
-            newAircraftModel.seatRows = aircraftTypeData.seatsAbreast.Length > index ? aircraftTypeData.seatsAbreast[index] : aircraftTypeData.seatsAbreast[0];
-
-            //Debug.Log("ACEO Tweaks | Log: Aircraft Adder MakeAircraftGameObject Model Block End");
-
-            short capULDLower = aircraftTypeData.capacityULDLowerDeck.Length > index ? aircraftTypeData.capacityULDLowerDeck[index] : aircraftTypeData.capacityULDLowerDeck[0];
-            short capULDUpper = aircraftTypeData.capacityULDUpperDeck.Length > index ? aircraftTypeData.capacityULDUpperDeck[index] : aircraftTypeData.capacityULDUpperDeck[0];
-            short conveyerPoints = aircraftTypeData.conveyerPoints.Length > index ? aircraftTypeData.conveyerPoints[index] : aircraftTypeData.conveyerPoints[0];
-            newAircraftController.doNotUseULD = capULDLower + capULDUpper > 0 ? false : true;
-            newAircraftController.requiresCargoTransferAssistance = (conveyerPoints > 0 || capULDLower + capULDUpper > 0) ? true : false; //belt or ULD
-
-            //Debug.Log("ACEO Tweaks | Log: Aircraft Adder MakeAircraftGameObject Controller Block End");
-
-            newAircraftModel.rangeKM = aircraftTypeData.range_KM.Length > index ? aircraftTypeData.range_KM[index] : aircraftTypeData.range_KM[0];
-            newAircraftModel.flyingSpeed = aircraftTypeData.speed_KMH.Length > index ? aircraftTypeData.speed_KMH[index] : aircraftTypeData.speed_KMH[0];
-            newAircraftModel.fuelTankCapacityLiters = aircraftTypeData.fuelCapacity_L.Length > index ? aircraftTypeData.fuelCapacity_L[index] : aircraftTypeData.fuelCapacity_L[0];
-
-            string engineType = aircraftTypeData.engineType.Length > index ? aircraftTypeData.engineType[index] : aircraftTypeData.engineType[0]; //radial,inline,turboprop,turbojet,low_turbofan,turbofan,high_turbofan,afterburner
-            switch (engineType)  //sets Prop/Jet; fuel type; afterburner
-            {
-                case "radial":
-                case "piston":
-                case "inline":
-                    newAircraftModel.aircraftEngineType = Enums.AircraftEngineType.Prop;
-                    newAircraftModel.fuelType = Enums.FuelType.Avgas100LL;
-                    newAircraftController.hasAfterburner = false;
-                    break;
-                case "turboprop":
-                    newAircraftModel.aircraftEngineType = Enums.AircraftEngineType.Prop;
-                    newAircraftModel.fuelType = Enums.FuelType.JetA1;
-                    newAircraftController.hasAfterburner = false;
-                    break;
-                case "turbojet":
-                case "low_turbofan":
-                case "turbofan":
-                case "high_turbofan":
-                    newAircraftModel.aircraftEngineType = Enums.AircraftEngineType.Jet;
-                    newAircraftModel.fuelType = Enums.FuelType.JetA1;
-                    newAircraftController.hasAfterburner = false;
-                    break;
-                case "afterburner":
-                    newAircraftModel.aircraftEngineType = Enums.AircraftEngineType.Jet;
-                    newAircraftModel.fuelType = Enums.FuelType.JetA1;
-                    newAircraftController.hasAfterburner = true;
-                    break;
-            } //sets engine type, fuel type, and afterburner
-            //Debug.Log("ACEO Tweaks | Log: Aircraft Adder MakeAircraftGameObject Engine Block End");
-
-            newAircraftController.requiresElevatedAccess = aircraftTypeData.needStairs.Length > index ? aircraftTypeData.needStairs[index] : aircraftTypeData.needStairs[0];
-
-            short cateringPoints = aircraftTypeData.cateringPoints.Length > index ? aircraftTypeData.cateringPoints[index] : aircraftTypeData.cateringPoints[0];
-            newAircraftController.onlyUseOneCateringTruck = cateringPoints <=1 ? true : false;
-
-            short jetbridgePoints = aircraftTypeData.jetbridgePoints.Length > index ? aircraftTypeData.jetbridgePoints[index] : aircraftTypeData.jetbridgePoints[0];
-            newAircraftController.onlyUseOneJetway = jetbridgePoints <=1 ? true : false;
-
-            //Debug.Log("ACEO Tweaks | Log: Aircraft Adder Make Aircraft Game Object Bottom");
-            return newGameObject;
+            Debug.LogError("ACEO Tweaks | Error: Couldn't find custom enum for " + copyOf.name);
         }
+        aircraftType.size = aircraftTypeData.size;
 
+        newGameObject.name = aircraftType.id;
+        newGameObject.transform.localEulerAngles = Vector3.zero;
+
+        if (AirportCEOAircraft.aircraftPrefabOverwrites.ContainsKey(copyOf))
+        {
+            Debug.LogWarning("ACEO Tweaks | Warn: Duplicate overwrites for " + aircraftType.id);
+        }
+        else
+        {
+            AirportCEOAircraft.aircraftPrefabOverwrites.Add(copyOf, newGameObject);
+        }
+    }
+    else
+    {
+        newGameObject = GameObject.Instantiate(copyOf);
+        aircraftType = new AircraftType
+        {
+            id = aircraftTypeData.id.Length > index ? aircraftTypeData.id[index] : aircraftTypeData.id[0],
+            size = aircraftTypeData.size
+        };
+
+        newGameObject.name = aircraftType.id;
+        newGameObject.transform.localEulerAngles = Vector3.zero;
+
+        var method = typeof(CustomEnums).GetMethod("AddAircrafTypeRange", BindingFlags.Static | BindingFlags.NonPublic);
+        if (method == null)
+        {
+            Debug.LogError("ACEO Tweaks | ERROR: Couldn't find AddAircraftTypeRange method via reflection!");
+        }
+        method.Invoke(obj: null, parameters: new object[] { new AircraftType[] { aircraftType } });
+    }
+
+    if (newGameObject == null)
+    {
+        Debug.LogError("ACEO Tweaks | Error: Aircraft Adder: newGameObject == null!");
+    }
+
+    // Use the correct controller type for helicopters
+    Type controllerType = aircraftTypeData.helicopter ? typeof(HelicopterController) : typeof(AircraftController);
+    AircraftController newAircraftController = (AircraftController)newGameObject.GetComponent(controllerType);
+    if (newAircraftController == null)
+    {
+        newAircraftController = (AircraftController)newGameObject.AddComponent(controllerType);
+    }
+
+    AircraftModel newAircraftModel = newAircraftController.am;
+    if (newAircraftModel == null)
+    {
+        Debug.LogError("ACEO Tweaks | Error: Aircraft Adder: newAircraftModel == null!");
+    }
+
+    newAircraftModel.aircraftType = aircraftTypeData.id[index];
+    newAircraftModel.weightClass = aircraftTypeData.threeStepSize;
+    newAircraftModel.isHelicopter = aircraftTypeData.helicopter;
+    newAircraftModel.manufacturer = aircraftTypeData.manufacturer.Length > index ? aircraftTypeData.manufacturer[index] : aircraftTypeData.manufacturer[0];
+    newAircraftModel.modelNbr = aircraftTypeData.displayName.Length > index ? aircraftTypeData.displayName[index] : aircraftTypeData.displayName[0];
+    newAircraftModel.maxPax = aircraftTypeData.capacity_PAX.Length > index ? aircraftTypeData.capacity_PAX[index] : aircraftTypeData.capacity_PAX[0];
+    newAircraftModel.seatRows = aircraftTypeData.seatsAbreast.Length > index ? aircraftTypeData.seatsAbreast[index] : aircraftTypeData.seatsAbreast[0];
+
+    short capULDLower = aircraftTypeData.capacityULDLowerDeck.Length > index ? aircraftTypeData.capacityULDLowerDeck[index] : aircraftTypeData.capacityULDLowerDeck[0];
+    short capULDUpper = aircraftTypeData.capacityULDUpperDeck.Length > index ? aircraftTypeData.capacityULDUpperDeck[index] : aircraftTypeData.capacityULDUpperDeck[0];
+    short conveyerPoints = aircraftTypeData.conveyerPoints.Length > index ? aircraftTypeData.conveyerPoints[index] : aircraftTypeData.conveyerPoints[0];
+    newAircraftController.doNotUseULD = capULDLower + capULDUpper > 0 ? false : true;
+    newAircraftController.requiresCargoTransferAssistance = (conveyerPoints > 0 || capULDLower + capULDUpper > 0);
+
+    newAircraftModel.rangeKM = aircraftTypeData.range_KM.Length > index ? aircraftTypeData.range_KM[index] : aircraftTypeData.range_KM[0];
+    newAircraftModel.flyingSpeed = aircraftTypeData.speed_KMH.Length > index ? aircraftTypeData.speed_KMH[index] : aircraftTypeData.speed_KMH[0];
+    newAircraftModel.fuelTankCapacityLiters = aircraftTypeData.fuelCapacity_L.Length > index ? aircraftTypeData.fuelCapacity_L[index] : aircraftTypeData.fuelCapacity_L[0];
+
+    string engineType = aircraftTypeData.engineType.Length > index ? aircraftTypeData.engineType[index] : aircraftTypeData.engineType[0];
+    switch (engineType)
+    {
+        case "radial":
+        case "piston":
+        case "inline":
+            newAircraftModel.aircraftEngineType = Enums.AircraftEngineType.Prop;
+            newAircraftModel.fuelType = Enums.FuelType.Avgas100LL;
+            newAircraftController.hasAfterburner = false;
+            break;
+        case "turboprop":
+            newAircraftModel.aircraftEngineType = Enums.AircraftEngineType.Prop;
+            newAircraftModel.fuelType = Enums.FuelType.JetA1;
+            newAircraftController.hasAfterburner = false;
+            break;
+        case "turbojet":
+        case "low_turbofan":
+        case "turbofan":
+        case "high_turbofan":
+            newAircraftModel.aircraftEngineType = Enums.AircraftEngineType.Jet;
+            newAircraftModel.fuelType = Enums.FuelType.JetA1;
+            newAircraftController.hasAfterburner = false;
+            break;
+        case "afterburner":
+            newAircraftModel.aircraftEngineType = Enums.AircraftEngineType.Jet;
+            newAircraftModel.fuelType = Enums.FuelType.JetA1;
+            newAircraftController.hasAfterburner = true;
+            break;
+    }
+
+    newAircraftController.requiresElevatedAccess = aircraftTypeData.needStairs.Length > index ? aircraftTypeData.needStairs[index] : aircraftTypeData.needStairs[0];
+
+    short cateringPoints = aircraftTypeData.cateringPoints.Length > index ? aircraftTypeData.cateringPoints[index] : aircraftTypeData.cateringPoints[0];
+    newAircraftController.onlyUseOneCateringTruck = cateringPoints <= 1;
+
+    short jetbridgePoints = aircraftTypeData.jetbridgePoints.Length > index ? aircraftTypeData.jetbridgePoints[index] : aircraftTypeData.jetbridgePoints[0];
+    newAircraftController.onlyUseOneJetway = jetbridgePoints <= 1;
+
+    return newGameObject;
+}
         private void DoTweaksLiveryBakeIn(GameObject aircraftGameObject, AircraftTypeData aircraftTypeData)
         {
             GameObject perfCEOGameObject = GameObject.Find("PerformanceCEOActive");
 
-            
+
 
             string filePath = aircraftTypeData.filePath.Replace("\\", "/");
 
@@ -286,8 +265,8 @@ namespace AirportCEOAircraft
                 LiveryComponent liveryComponent = liveryComponetArray[j];
 
                 liveryComponent.slicePosition = RoundVecToInt(liveryComponent.slicePosition / downscaleAmount);
-				liveryComponent.sliceSize = RoundVecToInt(liveryComponent.sliceSize / downscaleAmount);
-				liveryComponent.scale *= downscaleAmount;
+                liveryComponent.sliceSize = RoundVecToInt(liveryComponent.sliceSize / downscaleAmount);
+                liveryComponent.scale *= downscaleAmount;
 
                 liveryComponent.ClampValues(new Vector2((float)texture2D.width, (float)texture2D.height));
                 if (lhs == Vector2.zero || lhs2 == Vector2.zero || lhs != liveryComponent.slicePosition || lhs2 != liveryComponent.sliceSize)
@@ -335,7 +314,7 @@ namespace AirportCEOAircraft
             }
 
 
-            
+
 
 
         }
