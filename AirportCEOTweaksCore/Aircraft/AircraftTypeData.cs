@@ -47,8 +47,9 @@ namespace AirportCEOTweaksCore
 			data.shadowFix = this.shadowFix;
 			data.size = this.size;
 			data.threeStepSize = this.threeStepSize;
+			data.helicopter = this.helicopter;
 
-			//Debug.Log("SingleAircraftTypeData: fixxeds done");
+			Debug.Log("SingleAircraftTypeData: fixxeds done");
 			data.displayName = ArrayReducer(displayName, tryIndex);
 			data.iCAOCode = ArrayReducer(iCAOCode , tryIndex);
 			data.manufacturer = ArrayReducer(manufacturer , tryIndex);
@@ -169,6 +170,8 @@ namespace AirportCEOTweaksCore
 		public Enums.GenericSize size;
 		public Enums.ThreeStepScale threeStepSize;
 
+		public bool helicopter;
+
 		public string[] displayName;
 		public string[] iCAOCode;
 		public string[] manufacturer;
@@ -220,7 +223,7 @@ namespace AirportCEOTweaksCore
 				return id[0];
 			}
 		}
-		public string DisplayName             { get { return displayName?[0]; } }
+		public string DisplayName { get { return displayName?[0]; } }
 		public string ICAOCode				  { get { return  iCAOCode?[0]; }}
 		public string Manufacturer			  { get { return  manufacturer?		[0]; }}
 											  				 					

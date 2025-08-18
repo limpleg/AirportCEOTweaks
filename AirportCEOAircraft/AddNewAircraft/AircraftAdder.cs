@@ -161,6 +161,7 @@ namespace AirportCEOAircraft
 
             newAircraftModel.aircraftType = aircraftTypeData.id[index];  //must have an id at every index. Only manditory array.
             newAircraftModel.weightClass = aircraftTypeData.threeStepSize;
+            newAircraftModel.isHelicopter = aircraftTypeData.helicopter;
             newAircraftModel.manufacturer = aircraftTypeData.manufacturer.Length > index ? aircraftTypeData.manufacturer[index] : aircraftTypeData.manufacturer[0];
             newAircraftModel.modelNbr = aircraftTypeData.displayName.Length > index? aircraftTypeData.displayName[index] : aircraftTypeData.displayName[0];  
             newAircraftModel.maxPax = aircraftTypeData.capacity_PAX.Length > index ? aircraftTypeData.capacity_PAX[index] : aircraftTypeData.capacity_PAX[0];
