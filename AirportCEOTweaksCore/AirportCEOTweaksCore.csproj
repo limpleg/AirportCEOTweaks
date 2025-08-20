@@ -5,7 +5,7 @@
     <AssemblyName>AirportCEOTweaksCore</AssemblyName>
 	<Product>AirportCEOTweaksCore</Product>
     <Description></Description>
-	<Version>3.0.809.141</Version>
+	<Version>3.0.809.142</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RestoreAdditionalProjectSources>

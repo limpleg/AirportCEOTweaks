@@ -78,76 +78,112 @@ namespace AirportCEOAircraft
             yield return base.StartCoroutine(Initilize());
             yield return original;
         }
-        private GameObject MakeAircraftGameObject(AircraftTypeData aircraftTypeData, int index = 0)
+private GameObject MakeAircraftGameObject(AircraftTypeData aircraftTypeData, int index = 0)
 {
     GameObject copyOf = Singleton<AirTrafficController>.Instance.GetAircraftGameObject(aircraftTypeData.copyFrom);
-    GameObject newGameObject;
+    if (copyOf == null)
+    {
+        Debug.LogError($"ACEO Tweaks | Error: Could not find prefab for {aircraftTypeData.copyFrom}");
+        return null;
+    }
+
+    GameObject newGameObject = GameObject.Instantiate(copyOf);
     AircraftType aircraftType;
 
-    if (aircraftTypeData.id[index] == aircraftTypeData.copyFrom)
+    // Set up AircraftType and name
+    string aircraftId = aircraftTypeData.id.Length > index ? aircraftTypeData.id[index] : aircraftTypeData.id[0];
+    if (!CustomEnums.TryGetAircraftType(aircraftTypeData.copyFrom, out aircraftType))
     {
-        newGameObject = GameObject.Instantiate(copyOf);
-
-        if (!CustomEnums.TryGetAircraftType(aircraftTypeData.copyFrom, out aircraftType))
+        aircraftType = new AircraftType
         {
-            Debug.LogError("ACEO Tweaks | Error: Couldn't find custom enum for " + copyOf.name);
-        }
-        aircraftType.size = aircraftTypeData.size;
-
-        newGameObject.name = aircraftType.id;
-        newGameObject.transform.localEulerAngles = Vector3.zero;
-
-        if (AirportCEOAircraft.aircraftPrefabOverwrites.ContainsKey(copyOf))
+            id = aircraftId,
+            size = aircraftTypeData.size
+        };
+        var method = typeof(CustomEnums).GetMethod("AddAircrafTypeRange", BindingFlags.Static | BindingFlags.NonPublic);
+        if (method != null)
         {
-            Debug.LogWarning("ACEO Tweaks | Warn: Duplicate overwrites for " + aircraftType.id);
+            method.Invoke(null, new object[] { new AircraftType[] { aircraftType } });
         }
         else
         {
-            AirportCEOAircraft.aircraftPrefabOverwrites.Add(copyOf, newGameObject);
+            Debug.LogError("ACEO Tweaks | ERROR: Couldn't find AddAircraftTypeRange method via reflection!");
         }
+    }
+    aircraftType.size = aircraftTypeData.size;
+    newGameObject.name = aircraftType.id;
+    newGameObject.transform.localEulerAngles = Vector3.zero;
+
+    // Overwrite tracking
+    if (!AirportCEOAircraft.aircraftPrefabOverwrites.ContainsKey(copyOf))
+    {
+        AirportCEOAircraft.aircraftPrefabOverwrites.Add(copyOf, newGameObject);
     }
     else
     {
-        newGameObject = GameObject.Instantiate(copyOf);
-        aircraftType = new AircraftType
-        {
-            id = aircraftTypeData.id.Length > index ? aircraftTypeData.id[index] : aircraftTypeData.id[0],
-            size = aircraftTypeData.size
-        };
-
-        newGameObject.name = aircraftType.id;
-        newGameObject.transform.localEulerAngles = Vector3.zero;
-
-        var method = typeof(CustomEnums).GetMethod("AddAircrafTypeRange", BindingFlags.Static | BindingFlags.NonPublic);
-        if (method == null)
-        {
-            Debug.LogError("ACEO Tweaks | ERROR: Couldn't find AddAircraftTypeRange method via reflection!");
-        }
-        method.Invoke(obj: null, parameters: new object[] { new AircraftType[] { aircraftType } });
+        Debug.LogWarning("ACEO Tweaks | Warn: Duplicate overwrites for " + aircraftType.id);
     }
 
-    if (newGameObject == null)
+// Attach correct controller
+Type controllerType = aircraftTypeData.helicopter ? typeof(HelicopterController) : typeof(AircraftController);
+
+// Remove all AircraftController components that are not the desired type
+var existingControllers = newGameObject.GetComponents<AircraftController>();
+foreach (var controller in existingControllers)
+{
+    if (controller.GetType() != controllerType)
     {
-        Debug.LogError("ACEO Tweaks | Error: Aircraft Adder: newGameObject == null!");
+        GameObject.DestroyImmediate(controller);
     }
+}
 
-    // Use the correct controller type for helicopters
-    Type controllerType = aircraftTypeData.helicopter ? typeof(HelicopterController) : typeof(AircraftController);
-    AircraftController newAircraftController = (AircraftController)newGameObject.GetComponent(controllerType);
-    if (newAircraftController == null)
+// Ensure AircraftModel is created before adding the controller
+AircraftModel model = null;
+var tempController = newGameObject.GetComponent<AircraftController>();
+if (tempController != null && tempController.am != null)
+{
+    model = tempController.am;
+}
+else
+{
+    model = new AircraftModel();
+}
+
+// Add the correct controller if missing
+AircraftController newAircraftController = (AircraftController)newGameObject.GetComponent(controllerType);
+if (newAircraftController == null)
+{
+    newAircraftController = (AircraftController)newGameObject.AddComponent(controllerType);
+}
+newAircraftController.am = model;
+
+// Get AircraftModel
+AircraftModel newAircraftModel = newAircraftController.am;
+if (newAircraftModel == null)
+{
+    Debug.LogError("ACEO Tweaks | Error: Aircraft Adder: newAircraftModel == null!");
+    return newGameObject;
+}
+
+// Set model fields
+newAircraftModel.aircraftType = aircraftId;
+newAircraftModel.weightClass = aircraftTypeData.threeStepSize;
+
+// Helicopter Stuff added
+newAircraftModel.isHelicopter = aircraftTypeData.helicopter;
+if (aircraftTypeData.helicopter)
+{
+    var helicopterList = Singleton<AirTrafficController>.Instance.helicopters;
+    if (helicopterList != null && !helicopterList.Contains(aircraftId))
     {
-        newAircraftController = (AircraftController)newGameObject.AddComponent(controllerType);
-    }
+        var aircraftList = helicopterList.aircraft.ToList();
+        aircraftList.Add(aircraftId);
+        helicopterList.aircraft = aircraftList.ToArray();
 
-    AircraftModel newAircraftModel = newAircraftController.am;
-    if (newAircraftModel == null)
-    {
-        Debug.LogError("ACEO Tweaks | Error: Aircraft Adder: newAircraftModel == null!");
+        Debug.Log($"[AircraftAdder] Dynamically added helicopter type to AircraftTypeList.helicopters: {aircraftId}");
     }
+}
 
-    newAircraftModel.aircraftType = aircraftTypeData.id[index];
-    newAircraftModel.weightClass = aircraftTypeData.threeStepSize;
-    newAircraftModel.isHelicopter = aircraftTypeData.helicopter;
+
     newAircraftModel.manufacturer = aircraftTypeData.manufacturer.Length > index ? aircraftTypeData.manufacturer[index] : aircraftTypeData.manufacturer[0];
     newAircraftModel.modelNbr = aircraftTypeData.displayName.Length > index ? aircraftTypeData.displayName[index] : aircraftTypeData.displayName[0];
     newAircraftModel.maxPax = aircraftTypeData.capacity_PAX.Length > index ? aircraftTypeData.capacity_PAX[index] : aircraftTypeData.capacity_PAX[0];

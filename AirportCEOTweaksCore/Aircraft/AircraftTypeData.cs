@@ -49,7 +49,7 @@ namespace AirportCEOTweaksCore
 			data.threeStepSize = this.threeStepSize;
 			data.helicopter = this.helicopter;
 
-			Debug.Log("SingleAircraftTypeData: fixxeds done");
+			//Debug.Log("SingleAircraftTypeData: fixxeds done");
 			data.displayName = ArrayReducer(displayName, tryIndex);
 			data.iCAOCode = ArrayReducer(iCAOCode , tryIndex);
 			data.manufacturer = ArrayReducer(manufacturer , tryIndex);

@@ -16,7 +16,7 @@ namespace AirportCEOTweaksCore
             // More will probably be added!
             AirportCEOTweaksCore.LogInfo("Seting up ModLoader interactions");
 
-            WatermarkUtils.Register(new WatermarkInfo("Tweaks Core", Assembly.GetExecutingAssembly().GetName().Version.ToString(), false));
+            WatermarkUtils.Register(new WatermarkInfo("Tweaks Core 3.0.809.142", Assembly.GetExecutingAssembly().GetName().Version.ToString(), false));
 
             AirportCEOTweaksCore.LogInfo("Completed ModLoader interactions!");
         }
