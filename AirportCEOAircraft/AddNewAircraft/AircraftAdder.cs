@@ -11,17 +11,16 @@ using System.Reflection;
 using Tweaks_PerformanceCEO;
 using AirportCEOTweaksCore;
 
-
-
 namespace AirportCEOAircraft
 {
     class AircraftAdder : MonoBehaviour
     {
         public bool working = true;
 
-        public IEnumerator Initilize()
+        public IEnumerator Initialize()
         {
-            Debug.Log("Tweaks Aircraft loader init");
+            AirportCEOAircraft.TweaksLogger.LogMessage("Loading Aircrafts!");
+
             List<AircraftTypeData> aircraftTypeList = ProccessAircraftPaths(AirportCEOAircraft.aircraftPaths.ToArray());
             AirTrafficController atc = Singleton<AirTrafficController>.Instance;
             HashSet<GameObject> aircraftGameObjectsSet = new HashSet<GameObject>();
@@ -29,7 +28,8 @@ namespace AirportCEOAircraft
             int processedAircraftCount = 1;
             foreach (AircraftTypeData aircraftTypeData in aircraftTypeList)
             {
-                Debug.Log("Tweaks Aircraft loader foreach "+ aircraftTypeData.Id);
+                AirportCEOAircraft.TweaksLogger.LogInfo($"Now loading {aircraftTypeData.Id}");
+
                 for (int i = 0; i<aircraftTypeData.id.Length; i++)
                 {
                     GameObject aircraftGameObject = MakeAircraftGameObject(aircraftTypeData, i);
@@ -70,14 +70,9 @@ namespace AirportCEOAircraft
             atc.GetType().GetField("aircraftModels",BindingFlags.NonPublic | BindingFlags.Instance).SetValue(atc, aircraftModelList.ToArray());
 
             working = false;
-            //Singleton<SaveLoadGameDataController>.Instance.InitializeGameSession();
             yield break;
         }
-        public IEnumerator packagedEnumerator(object original)
-        {
-            yield return base.StartCoroutine(Initilize());
-            yield return original;
-        }
+
         private GameObject MakeAircraftGameObject(AircraftTypeData aircraftTypeData, int index = 0)
         {
 

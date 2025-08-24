@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C2B963EF-37D6-470F-8B80-F4382A7DB5A6}|AirportCEOTweaksCore\\AirportCEOTweaksCore.csproj|c:\\my stuff\\airport ceo modding\\bepinex development environment\\airportceotweaks\\airportceotweakscore\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2B963EF-37D6-470F-8B80-F4382A7DB5A6}|AirportCEOTweaksCore\\AirportCEOTweaksCore.csproj|solutionrelative:airportceotweakscore\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2BE3A42D-F0E7-45A0-9232-81FC4DF99D3C}|AirportCEOAircraft\\AirportCEOAircraft.csproj|c:\\my stuff\\airport ceo modding\\bepinex development environment\\airportceotweaks\\airportceoaircraft\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2BE3A42D-F0E7-45A0-9232-81FC4DF99D3C}|AirportCEOAircraft\\AirportCEOAircraft.csproj|solutionrelative:airportceoaircraft\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{778D4643-A236-49E7-9801-699D93DC20B8}|AirportCEOFlightLimitTweak\\AirportCEOFlightLimitTweak.csproj|c:\\my stuff\\airport ceo modding\\bepinex development environment\\airportceotweaks\\airportceoflightlimittweak\\airportceoflightlimittweak.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{778D4643-A236-49E7-9801-699D93DC20B8}|AirportCEOFlightLimitTweak\\AirportCEOFlightLimitTweak.csproj|solutionrelative:airportceoflightlimittweak\\airportceoflightlimittweak.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{2BE3A42D-F0E7-45A0-9232-81FC4DF99D3C}|AirportCEOAircraft\\AirportCEOAircraft.csproj|c:\\my stuff\\airport ceo modding\\bepinex development environment\\airportceotweaks\\airportceoaircraft\\addnewaircraft\\aircraftadder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BE3A42D-F0E7-45A0-9232-81FC4DF99D3C}|AirportCEOAircraft\\AirportCEOAircraft.csproj|solutionrelative:airportceoaircraft\\addnewaircraft\\aircraftadder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2BE3A42D-F0E7-45A0-9232-81FC4DF99D3C}|AirportCEOAircraft\\AirportCEOAircraft.csproj|c:\\my stuff\\airport ceo modding\\bepinex development environment\\airportceotweaks\\airportceoaircraft\\airportceoaircraft.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{2BE3A42D-F0E7-45A0-9232-81FC4DF99D3C}|AirportCEOAircraft\\AirportCEOAircraft.csproj|solutionrelative:airportceoaircraft\\airportceoaircraft.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{2BE3A42D-F0E7-45A0-9232-81FC4DF99D3C}|AirportCEOAircraft\\AirportCEOAircraft.csproj|c:\\my stuff\\airport ceo modding\\bepinex development environment\\airportceotweaks\\airportceoaircraft\\modloaderinteractionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BE3A42D-F0E7-45A0-9232-81FC4DF99D3C}|AirportCEOAircraft\\AirportCEOAircraft.csproj|solutionrelative:airportceoaircraft\\modloaderinteractionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2B963EF-37D6-470F-8B80-F4382A7DB5A6}|AirportCEOTweaksCore\\AirportCEOTweaksCore.csproj|c:\\my stuff\\airport ceo modding\\bepinex development environment\\airportceotweaks\\airportceotweakscore\\airportceotweakscore.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{C2B963EF-37D6-470F-8B80-F4382A7DB5A6}|AirportCEOTweaksCore\\AirportCEOTweaksCore.csproj|solutionrelative:airportceotweakscore\\airportceotweakscore.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{2BE3A42D-F0E7-45A0-9232-81FC4DF99D3C}|AirportCEOAircraft\\AirportCEOAircraft.csproj|c:\\my stuff\\airport ceo modding\\bepinex development environment\\airportceotweaks\\airportceoaircraft\\addnewaircraft\\patches\\patch_saveloadgamedatacontrollertoaddnewprefabs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BE3A42D-F0E7-45A0-9232-81FC4DF99D3C}|AirportCEOAircraft\\AirportCEOAircraft.csproj|solutionrelative:airportceoaircraft\\addnewaircraft\\patches\\patch_saveloadgamedatacontrollertoaddnewprefabs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF559302-7C49-4F1F-9A1E-53CC45E453DD}|AirportCEORunways\\AirportCEORunways.csproj|c:\\my stuff\\airport ceo modding\\bepinex development environment\\airportceotweaks\\airportceorunways\\airportceorunways.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{BF559302-7C49-4F1F-9A1E-53CC45E453DD}|AirportCEORunways\\AirportCEORunways.csproj|solutionrelative:airportceorunways\\airportceorunways.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5BFE59AF-5683-46D9-B576-E1ADED65CD5B}|AirportCEOPlanningReplanned\\AirportCEOPlanningReplanned.csproj|c:\\my stuff\\airport ceo modding\\bepinex development environment\\airportceotweaks\\airportceoplanningreplanned\\airportceoplanningreplanned.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{5BFE59AF-5683-46D9-B576-E1ADED65CD5B}|AirportCEOPlanningReplanned\\AirportCEOPlanningReplanned.csproj|solutionrelative:airportceoplanningreplanned\\airportceoplanningreplanned.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{2BE3A42D-F0E7-45A0-9232-81FC4DF99D3C}|AirportCEOAircraft\\AirportCEOAircraft.csproj|c:\\my stuff\\airport ceo modding\\bepinex development environment\\airportceotweaks\\airportceoaircraft\\airportceoaircraft.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BE3A42D-F0E7-45A0-9232-81FC4DF99D3C}|AirportCEOAircraft\\AirportCEOAircraft.csproj|solutionrelative:airportceoaircraft\\airportceoaircraft.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,78 +40,78 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AssemblyInfo.cs",
-              "DocumentMoniker": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\AssemblyInfo.cs",
-              "RelativeDocumentMoniker": "AirportCEOAircraft\\AssemblyInfo.cs",
-              "ToolTip": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\AssemblyInfo.cs",
-              "RelativeToolTip": "AirportCEOAircraft\\AssemblyInfo.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "DocumentMoniker": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOTweaksCore\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "AirportCEOTweaksCore\\AssemblyInfo.cs",
+              "ToolTip": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOTweaksCore\\AssemblyInfo.cs",
+              "RelativeToolTip": "AirportCEOTweaksCore\\AssemblyInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T01:45:49.834Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AirportCEOAircraft",
-              "DocumentMoniker": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\AirportCEOAircraft.csproj",
-              "RelativeDocumentMoniker": "AirportCEOAircraft\\AirportCEOAircraft.csproj",
-              "ToolTip": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\AirportCEOAircraft.csproj",
-              "RelativeToolTip": "AirportCEOAircraft\\AirportCEOAircraft.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-24T01:43:41.153Z",
+              "WhenOpened": "2025-08-24T02:52:07.222Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AirportCEOFlightLimitTweak",
-              "DocumentMoniker": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOFlightLimitTweak\\AirportCEOFlightLimitTweak.csproj",
-              "RelativeDocumentMoniker": "AirportCEOFlightLimitTweak\\AirportCEOFlightLimitTweak.csproj",
-              "ToolTip": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOFlightLimitTweak\\AirportCEOFlightLimitTweak.csproj",
-              "RelativeToolTip": "AirportCEOFlightLimitTweak\\AirportCEOFlightLimitTweak.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-24T01:43:33.358Z",
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "AirportCEOAircraft\\AssemblyInfo.cs",
+              "ToolTip": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\AssemblyInfo.cs",
+              "RelativeToolTip": "AirportCEOAircraft\\AssemblyInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T02:51:57.992Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "AirportCEOPlanningReplanned",
-              "DocumentMoniker": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOPlanningReplanned\\AirportCEOPlanningReplanned.csproj",
-              "RelativeDocumentMoniker": "AirportCEOPlanningReplanned\\AirportCEOPlanningReplanned.csproj",
-              "ToolTip": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOPlanningReplanned\\AirportCEOPlanningReplanned.csproj",
-              "RelativeToolTip": "AirportCEOPlanningReplanned\\AirportCEOPlanningReplanned.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-24T01:43:26.15Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AirportCEORunways",
-              "DocumentMoniker": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEORunways\\AirportCEORunways.csproj",
-              "RelativeDocumentMoniker": "AirportCEORunways\\AirportCEORunways.csproj",
-              "ToolTip": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEORunways\\AirportCEORunways.csproj",
-              "RelativeToolTip": "AirportCEORunways\\AirportCEORunways.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-24T01:43:18.44Z",
+              "Title": "AirportCEOAircraft.cs",
+              "DocumentMoniker": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\AirportCEOAircraft.cs",
+              "RelativeDocumentMoniker": "AirportCEOAircraft\\AirportCEOAircraft.cs",
+              "ToolTip": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\AirportCEOAircraft.cs",
+              "RelativeToolTip": "AirportCEOAircraft\\AirportCEOAircraft.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T02:43:32.481Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AirportCEOTweaksCore",
-              "DocumentMoniker": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOTweaksCore\\AirportCEOTweaksCore.csproj",
-              "RelativeDocumentMoniker": "AirportCEOTweaksCore\\AirportCEOTweaksCore.csproj",
-              "ToolTip": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOTweaksCore\\AirportCEOTweaksCore.csproj",
-              "RelativeToolTip": "AirportCEOTweaksCore\\AirportCEOTweaksCore.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-24T01:29:05.838Z",
+              "Title": "ModLoaderInteractionHandler.cs",
+              "DocumentMoniker": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\ModLoaderInteractionHandler.cs",
+              "RelativeDocumentMoniker": "AirportCEOAircraft\\ModLoaderInteractionHandler.cs",
+              "ToolTip": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\ModLoaderInteractionHandler.cs",
+              "RelativeToolTip": "AirportCEOAircraft\\ModLoaderInteractionHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T02:29:24.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Patch_SaveLoadGameDataControllerToAddNewPrefabs.cs",
+              "DocumentMoniker": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\AddNewAircraft\\Patches\\Patch_SaveLoadGameDataControllerToAddNewPrefabs.cs",
+              "RelativeDocumentMoniker": "AirportCEOAircraft\\AddNewAircraft\\Patches\\Patch_SaveLoadGameDataControllerToAddNewPrefabs.cs",
+              "ToolTip": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\AddNewAircraft\\Patches\\Patch_SaveLoadGameDataControllerToAddNewPrefabs.cs",
+              "RelativeToolTip": "AirportCEOAircraft\\AddNewAircraft\\Patches\\Patch_SaveLoadGameDataControllerToAddNewPrefabs.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T02:20:13.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AircraftAdder.cs",
+              "DocumentMoniker": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\AddNewAircraft\\AircraftAdder.cs",
+              "RelativeDocumentMoniker": "AirportCEOAircraft\\AddNewAircraft\\AircraftAdder.cs",
+              "ToolTip": "C:\\My Stuff\\Airport CEO Modding\\BepInEx Development Environment\\AirportCEOTweaks\\AirportCEOAircraft\\AddNewAircraft\\AircraftAdder.cs",
+              "RelativeToolTip": "AirportCEOAircraft\\AddNewAircraft\\AircraftAdder.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAAABcAAAB4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T01:50:48.198Z",
               "EditorCaption": ""
             },
             {
