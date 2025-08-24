@@ -17,6 +17,9 @@ namespace AirportCEOAircraft
     {
         public bool working = true;
 
+        private static readonly string aircraftText = "aircraft";
+        private static readonly string helicopterText = "helicopter";
+
         public IEnumerator Initialize()
         {
             AirportCEOAircraft.TweaksLogger.LogMessage("Loading Aircrafts!");
@@ -28,7 +31,8 @@ namespace AirportCEOAircraft
             int processedAircraftCount = 1;
             foreach (AircraftTypeData aircraftTypeData in aircraftTypeList)
             {
-                AirportCEOAircraft.TweaksLogger.LogInfo($"Now loading {aircraftTypeData.Id}");
+                // Ex: "Now loading helicopter H130"
+                AirportCEOAircraft.TweaksLogger.LogInfo($"Now loading {(aircraftTypeData.helicopter ? helicopterText : aircraftText)} {aircraftTypeData.Id}");
 
                 for (int i = 0; i<aircraftTypeData.id.Length; i++)
                 {
@@ -160,6 +164,8 @@ namespace AirportCEOAircraft
             newAircraftModel.modelNbr = aircraftTypeData.displayName.Length > index? aircraftTypeData.displayName[index] : aircraftTypeData.displayName[0];  
             newAircraftModel.maxPax = aircraftTypeData.capacity_PAX.Length > index ? aircraftTypeData.capacity_PAX[index] : aircraftTypeData.capacity_PAX[0];
             newAircraftModel.seatRows = aircraftTypeData.seatsAbreast.Length > index ? aircraftTypeData.seatsAbreast[index] : aircraftTypeData.seatsAbreast[0];
+
+            newAircraftModel.isHelicopter = aircraftTypeData.helicopter;
 
             //Debug.Log("ACEO Tweaks | Log: Aircraft Adder MakeAircraftGameObject Model Block End");
 
